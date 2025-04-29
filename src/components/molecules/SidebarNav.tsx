@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { LineChart, Bot, Settings } from 'lucide-react';
+import { LineChart, ShieldAlert, Settings } from 'lucide-react';
 import NavItem from '../atoms/NavItem';
 import Logo from '../atoms/Logo';
 
@@ -16,7 +16,7 @@ const SidebarNav: React.FC = () => {
       variant: "secondary"
     },
     {
-      icon: <Bot className="h-4 w-4" />,
+      icon: <ShieldAlert className="h-4 w-4" />,
       label: "Antifraude",
       href: "/chat",
       variant: "primary"

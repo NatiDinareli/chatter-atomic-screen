@@ -5,6 +5,8 @@ import AppSidebar from '../organisms/AppSidebar';
 import ChatContainer from '../organisms/ChatContainer';
 import CaseInfoPanel from '../molecules/CaseInfoPanel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Bell, User } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 const ChatPageTemplate: React.FC = () => {
   // Mock data
@@ -29,9 +31,18 @@ const ChatPageTemplate: React.FC = () => {
       <AppSidebar />
       <div className="flex-1">
         <header className="border-b">
-          <div className="flex items-center h-16 px-4">
-            <SidebarTrigger />
-            <div className="ml-4 font-medium">Echo AI - Assistente de Análise</div>
+          <div className="flex items-center justify-between h-16 px-4">
+            <div className="flex items-center">
+              <SidebarTrigger />
+              <div className="ml-4 font-medium">Echo AI - Assistente de Análise</div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Bell className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
+              <Avatar className="h-8 w-8 cursor-pointer">
+                <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                <AvatarFallback>U</AvatarFallback>
+              </Avatar>
+            </div>
           </div>
         </header>
         <main className="container py-6">

@@ -8,7 +8,7 @@ import SidebarNav from '../molecules/SidebarNav';
 
 const AppSidebar: React.FC = () => {
   return (
-    <Sidebar>
+    <Sidebar variant="floating">
       <SidebarContent>
         <SidebarNav />
       </SidebarContent>

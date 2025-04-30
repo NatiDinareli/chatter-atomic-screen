@@ -20,17 +20,19 @@ const SidebarNav: React.FC = () => {
       label: "Antifraude",
       href: "/",
       variant: "primary"
-    },
-    {
-      icon: <Settings className="h-4 w-4" />,
-      label: "Configurações",
-      href: "/settings",
-      variant: "secondary"
     }
   ];
 
+  // Settings navigation item separated to place at the bottom
+  const settingsItem = {
+    icon: <Settings className="h-4 w-4" />,
+    label: "Configurações",
+    href: "/settings",
+    variant: "secondary"
+  };
+
   return (
-    <div className="space-y-4 py-4">
+    <div className="space-y-4 py-4 flex flex-col h-full">
       <div className="px-4 py-2 flex items-center gap-2">
         <div className="bg-primary/10 w-6 h-6 flex items-center justify-center rounded-md">
           <span className="text-primary text-lg">E</span>
@@ -55,7 +57,22 @@ const SidebarNav: React.FC = () => {
         })}
       </div>
       
-      <div className="absolute bottom-4 px-4 w-full">
+      {/* This spacer pushes the content below it to the bottom */}
+      <div className="flex-grow"></div>
+      
+      {/* Settings at the bottom */}
+      <div className="px-3 mb-4">
+        <NavItem
+          icon={settingsItem.icon}
+          label={settingsItem.label}
+          href={settingsItem.href}
+          isActive={location.pathname === settingsItem.href}
+          className={settingsItem.variant === "primary" ? "bg-primary/15 text-primary hover:bg-primary/20" : ""}
+        />
+      </div>
+      
+      {/* Centered NUVTECH text at the bottom */}
+      <div className="px-4 w-full text-center">
         <div className="text-xs text-muted-foreground">NUVTECH</div>
       </div>
     </div>

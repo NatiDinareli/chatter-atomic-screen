@@ -12,13 +12,13 @@ const SidebarNav: React.FC = () => {
     {
       icon: <LineChart className="h-4 w-4" />,
       label: "Echo AI",
-      href: "/",
+      href: "/chat",
       variant: "secondary"
     },
     {
       icon: <ShieldAlert className="h-4 w-4" />,
       label: "Antifraude",
-      href: "/chat",
+      href: "/",
       variant: "primary"
     },
     {

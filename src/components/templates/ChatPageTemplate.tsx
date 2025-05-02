@@ -1,14 +1,24 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import AppSidebar from '../organisms/AppSidebar';
 import ChatContainer from '../organisms/ChatContainer';
 import CaseInfoPanel from '../molecules/CaseInfoPanel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bell, User } from 'lucide-react';
+import { Bell, LogOut, User } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const ChatPageTemplate: React.FC = () => {
+  const navigate = useNavigate();
+  
   // Mock data
   const caseInfo = {
     id: 'CASE-2024-0215',
@@ -26,6 +36,10 @@ const ChatPageTemplate: React.FC = () => {
     }
   ];
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="min-h-screen flex w-full">
       <AppSidebar />
@@ -38,10 +52,30 @@ const ChatPageTemplate: React.FC = () => {
             </div>
             <div className="flex items-center gap-4">
               <Bell className="h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
-              <Avatar className="h-8 w-8 cursor-pointer">
-                <AvatarImage src="https://github.com/shadcn.png" alt="User" />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar className="h-8 w-8 cursor-pointer">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                    <AvatarFallback>U</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <div className="flex items-center justify-start gap-2 p-2">
+                    <div className="flex flex-col space-y-1 leading-none">
+                      <p className="font-medium">Usuário</p>
+                      <p className="text-sm text-muted-foreground">usuario@nuvtech.com</p>
+                    </div>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem 
+                    className="cursor-pointer flex items-center gap-2 text-destructive focus:text-destructive" 
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Sair</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </header>

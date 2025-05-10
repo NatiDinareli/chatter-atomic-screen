@@ -131,18 +131,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false 
         <Button
           type="button"
           size="icon"
-          variant="ghost"
-          onClick={handleFileSelect}
-          disabled={isLoading || isRecording}
-          className="flex-shrink-0"
-          title="Anexar arquivo"
-        >
-          <Paperclip className="h-4 w-4" />
-        </Button>
-        
-        <Button
-          type="button"
-          size="icon"
           variant={isRecording ? "destructive" : "ghost"}
           onClick={toggleRecording}
           disabled={isLoading}
@@ -159,6 +147,18 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false 
           className="flex-1"
           disabled={isLoading || isRecording}
         />
+        
+        <Button
+          type="button"
+          size="icon"
+          variant="ghost"
+          onClick={handleFileSelect}
+          disabled={isLoading || isRecording}
+          className="flex-shrink-0"
+          title="Anexar arquivo"
+        >
+          <Paperclip className="h-4 w-4" />
+        </Button>
         
         <Button 
           type="submit" 
